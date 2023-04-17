@@ -13,7 +13,7 @@ Config.y = 0372.4734
 Config.z = 0089.6804   
 
 ----------- turn on the bar ------
-function EnableResouresIMAP() 
+function EnableResouresYMAPS() 
     -- none for this set
 end
 
@@ -35,7 +35,7 @@ function EnableResouresINTERIORS(x, y, z)
 end
 
 ----------- turn off the bar ------
-function DisableResourcesIMAPS()
+function DisableResourcesYMAPS()
     -- none for this set
 end
 
@@ -70,7 +70,7 @@ RegisterCommand("turnonbar", function(source, args)
 end)
 RegisterNetEvent('ERBAR:turnonbar')
 AddEventHandler('ERBAR:turnonbar', function(no_String)  
-	EnableResouresIMAP() 
+	EnableResouresYMAPS() 
     EnableResouresINTERIORS(Config.x, Config.y, Config.z)
     Wait(800) 
 end) 
@@ -84,7 +84,7 @@ RegisterCommand("turnoffbar", function(source, args)
 end)
 RegisterNetEvent('ERBAR:turnoffbar')
 AddEventHandler('ERBAR:turnoffbar', function(no_String)  
-	DisableResourcesIMAPS()
+	DisableResourcesYMAPS()
     DisableResourcesINTERIORS(Config.x, Config.y, Config.z)
     Wait(800) 
 end)  
@@ -95,7 +95,7 @@ end)
 AddEventHandler('onResourceStop', function(resource) 
     if resource == GetCurrentResourceName() then     
         -- when resource stops disable them, admin is restarting the script
-        DisableResourcesIMAPS() 
+        DisableResourcesYMAPS() 
         DisableResourcesINTERIORS(Config.x, Config.y, Config.z)
     end
 end)
@@ -107,7 +107,7 @@ AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then         
         Citizen.Wait(3000)
         -- interiors loads all of these, so we need to disable them 
-        DisableResourcesIMAPS() 
+        DisableResourcesYMAPS() 
         DisableResourcesINTERIORS(Config.x, Config.y, Config.z)
         Citizen.Wait(3000)        
         -- because the character is already logged in on resource "re"start
@@ -161,7 +161,7 @@ Citizen.CreateThread(function()
     end 
     if character_selected == true and interiorsActive == false then 
         -- basically run once after character has loadded in  
-        EnableResouresIMAP() 
+        EnableResouresYMAPS() 
         EnableResouresINTERIORS(Config.x, Config.y, Config.z)
         interiorsActive = true
     end
